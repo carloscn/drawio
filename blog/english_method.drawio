@@ -1,0 +1,67 @@
+<mxfile host="Electron" modified="2024-03-29T10:02:21.891Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="8kx0LIi1xnyxczAE0w7g" version="24.0.4" type="device">
+  <diagram name="第 1 页" id="HdN4AFQ9suC3w6o7vu_d">
+    <mxGraphModel dx="1114" dy="1053" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-2" value="" style="shape=mxgraph.signs.healthcare.brain;html=1;pointerEvents=1;fillColor=#000000;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="250" y="220" width="98" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-3" value="CACHE" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Comic Sans MS;fontSize=23;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="220" y="380" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-4" value="DDR" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Comic Sans MS;fontSize=23;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="145" y="510" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-5" value="DISK" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;fontFamily=Comic Sans MS;fontSize=23;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="5" y="650" width="600" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-7" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="443" as="sourcePoint" />
+            <mxPoint x="280" y="503" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-8" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="500" as="sourcePoint" />
+            <mxPoint x="320" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-9" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="278.5" y="585" as="sourcePoint" />
+            <mxPoint x="278.5" y="645" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-10" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="318.5" y="642" as="sourcePoint" />
+            <mxPoint x="318.5" y="592" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-11" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="284.5" y="310" as="sourcePoint" />
+            <mxPoint x="284.5" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-12" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="324.5" y="367" as="sourcePoint" />
+            <mxPoint x="324.5" y="317" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-13" value="反应非常快，不需要运算&lt;div style=&quot;font-size: 15px;&quot;&gt;容量低，不常用的会放入DISK&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="400" y="395" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-14" value="反应比CACHE慢，高于DISK&lt;div&gt;临时运算区域，大脑思考决策的时候用&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="480" y="510" width="220" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="-8n8DoR9NgG0nAzjHpfc-15" value="空间非常巨大，陈年往事都能存住，只要大脑不去回忆，过去的事就被尘封于此；当大脑需要回忆的时候，需要从这里读，DISK数据 -&amp;gt; DDR -&amp;gt; CACHE -&amp;gt; 大脑" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="5" y="710" width="685" height="55" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
