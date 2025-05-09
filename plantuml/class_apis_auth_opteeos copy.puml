@@ -1,0 +1,114 @@
+@startuml class
+' Define packages for REE (Linux-OS) and OP-TEE OS
+
+package "REE_Linux_OS" {
+  class Other_Linux_Apps
+
+  package "CA_side_APIs" {
+    class ca_face_palm_recognition {
+      +ca_face_recognition_process(): TEEC_Result
+      +ca_palm_recognition_process(): TEEC_Result
+    }
+
+    class ca_face_palm_db {
+      +ca_face_init_bd_ctx(): TEEC_Result
+      +ca_face_enroll_bd(face_id: size_t, value: float*, value_len: size_t): TEEC_Result
+      +ca_face_retrieve_bd(face_id: size_t, value: float*, value_len: size_t): TEEC_Result
+      +ca_face_remove_bd(face_id: size_t): TEEC_Result
+      +ca_face_free_bd_ctx(): TEEC_Result
+      +ca_palm_init_bd_ctx(): TEEC_Result
+      +ca_palm_enroll_bd(palm_id: size_t, value: float*, value_len: size_t): TEEC_Result
+      +ca_palm_retrieve_bd(palm_id: size_t, value: float*, value_len: size_t): TEEC_Result
+      +ca_palm_remove_bd(palm_id: size_t): TEEC_Result
+      +ca_palm_free_bd_ctx(): TEEC_Result
+      +ca_palm_search_uid(): TEEC_Result
+    }
+
+    class ca_face_algo {
+      ' Interacts with ta_face_algo via ca_face_palm_recognition for face recognition processing
+    }
+
+    class ca_palm_algo {
+      ' Interacts with ta_palm_algo via ca_face_palm_recognition for palm recognition processing
+    }
+  }
+}
+
+package "OP_TEE_OS" {
+  package "TA_side_APIs" {
+    class biometric_tee_lib_ta {
+      ' Main TA entry point, dispatches commands to other TA-side modules
+    }
+
+    class ta_face_palm_db {
+      +face_init_bd_ctx(): TEE_Result
+      +face_enroll_bd(face_id: size_t, value: float*, value_len: size_t): TEE_Result
+      +face_retrieve_bd(face_id: size_t, value: float*, value_len: size_t): TEE_Result
+      +face_remove_bd(face_id: size_t): TEE_Result
+      +face_free_bd_ctx(): TEE_Result
+      +palm_init_bd_ctx(): TEE_Result
+      +palm_enroll_bd(palm_id: size_t, value: float*, value_len: size_t): TEE_Result
+      +palm_retrieve_bd(palm_id: size_t, value: float*, value_len: size_t): TEE_Result
+      +palm_remove_bd(palm_id: size_t): TEE_Result
+      +palm_free_bd_ctx(): TEE_Result
+    }
+
+    class ta_face_algo {
+      ' Assumed function for face recognition processing
+      +face_recognition_process(): TEE_Result
+    }
+
+    class ta_palm_algo {
+      ' Assumed function for palm recognition processing
+      +palm_recognition_process(): TEE_Result
+    }
+
+    class ta_db_core {
+      +ta_enroll_db(key: size_t, value: float*, value_len: size_t): TEE_Result
+      +ta_retrieve_db(key: size_t, value: float*, value_len: size_t): TEE_Result
+      +ta_remove_db(key: size_t): TEE_Result
+      +ta_check_db_exists(key: size_t, exists: bool*): TEE_Result
+      +ta_clear_db(): TEE_Result
+    }
+
+    class secure_storage_APIs {
+      ' OP-TEE secure storage APIs (e.g., REE FS)
+    }
+  }
+}
+
+' Define dependencies
+Other_Linux_Apps --> ca_face_palm_db
+Other_Linux_Apps --> ca_face_algo
+Other_Linux_Apps --> ca_palm_algo
+
+ca_face_palm_db --> biometric_tee_lib_ta
+ca_face_palm_recognition --> biometric_tee_lib_ta
+
+ca_face_algo --> ca_face_palm_recognition
+ca_palm_algo --> ca_face_palm_recognition
+
+biometric_tee_lib_ta --> ta_face_palm_db
+biometric_tee_lib_ta --> ta_face_algo
+biometric_tee_lib_ta --> ta_palm_algo
+
+ta_face_algo --> ta_face_palm_db
+ta_palm_algo --> ta_face_palm_db
+
+ta_face_palm_db --> ta_db_core
+ta_db_core --> secure_storage_APIs
+
+' Layout adjustments
+Other_Linux_Apps -[hidden]down- ca_face_palm_db
+Other_Linux_Apps -[hidden]down- ca_face_algo
+Other_Linux_Apps -[hidden]down- ca_palm_algo
+ca_face_palm_db -[hidden]down- biometric_tee_lib_ta
+biometric_tee_lib_ta -[hidden]down- ta_face_palm_db
+ta_face_palm_db -[hidden]down- ta_db_core
+ta_db_core -[hidden]down- secure_storage_APIs
+
+ca_face_algo -[hidden]down- ca_face_palm_recognition
+ca_palm_algo -[hidden]down- ca_face_palm_recognition
+ca_face_palm_recognition -[hidden]down- biometric_tee_lib_ta
+
+@enduml

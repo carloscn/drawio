@@ -1,0 +1,55 @@
+@startuml component
+' Define packages for REE (Linux-OS) and OP-TEE OS
+
+package "REE_Linux_OS" {
+  [Other_Linux_Apps]
+
+  package "CA_side_APIs" {
+    [ca_face_palm_recognition]
+    [ca_face_palm_db]
+    [ca_face_algo]
+    [ca_palm_algo]
+  }
+}
+
+package "OP_TEE_OS" {
+  package "TA_side_APIs" {
+    [biometric_tee_lib_ta]
+    [ta_face_palm_db]
+    [ta_face_algo]
+    [ta_palm_algo]
+    [ta_db_core]
+    [secure_storage_APIs]
+  }
+}
+
+' Define dependencies
+[Other_Linux_Apps] --> [ca_face_palm_recognition]
+[Other_Linux_Apps] --> [ca_face_palm_db]
+
+[ca_face_palm_recognition] --> [ca_face_algo]
+[ca_face_palm_recognition] --> [ca_palm_algo]
+
+[ca_face_palm_db] --> [biometric_tee_lib_ta]
+[ca_face_algo] --> [ta_face_algo]
+[ca_palm_algo] --> [ta_palm_algo]
+
+[biometric_tee_lib_ta] --> [ta_face_palm_db]
+[biometric_tee_lib_ta] --> [ta_face_algo]
+[biometric_tee_lib_ta] --> [ta_palm_algo]
+
+[ta_face_palm_db] --> [ta_db_core]
+[ta_db_core] --> [secure_storage_APIs]
+
+' Layout adjustments
+[Other_Linux_Apps] -[hidden]down- [ca_face_palm_recognition]
+[Other_Linux_Apps] -[hidden]down- [ca_face_palm_db]
+[ca_face_palm_db] -[hidden]down- [biometric_tee_lib_ta]
+[biometric_tee_lib_ta] -[hidden]down- [ta_face_palm_db]
+[ta_face_palm_db] -[hidden]down- [ta_db_core]
+[ta_db_core] -[hidden]down- [secure_storage_APIs]
+
+[ca_face_algo] -[hidden]down- [ta_face_algo]
+[ca_palm_algo] -[hidden]down- [ta_palm_algo]
+
+@enduml
